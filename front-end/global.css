@@ -1,87 +1,93 @@
 @import "tailwindcss";
 @import "uniwind";
 
-@import "tw-animate-css"; 
+@import "tw-animate-css";
 
 @theme {
-  --radius: 10px;
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius: 16px;
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 4px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+  --radius-2xl: calc(var(--radius) + 16px);
 
   --spacing-hairline: hairlineWidth();
+
+  /* Couleurs de marque identiques en clair et en sombre */
+  --color-turquoise: #0d9488;
+  --color-sky: #93c5fd;
+  --color-midnight: #172554;
 }
 
 @layer theme {
   :root {
     @variant light {
-    --color-background:  oklch(1 0 0);
-    --color-foreground:  oklch(0.145 0 0);
-    --color-card:  oklch(1 0 0);
-    --color-card-foreground:  oklch(0.145 0 0);
-    --color-popover:  oklch(1 0 0);
-    --color-popover-foreground:  oklch(0.145 0 0);
-    --color-primary:  oklch(0.205 0 0);
-    --color-primary-foreground:  oklch(0.985 0 0);
-    --color-secondary:  oklch(0.97 0 0);
-    --color-secondary-foreground:  oklch(0.205 0 0);
-    --color-muted:  oklch(0.97 0 0);
-    --color-muted-foreground:  oklch(0.556 0 0);
-    --color-accent:  oklch(0.97 0 0);
-    --color-accent-foreground:  oklch(0.205 0 0);
-    --color-destructive:  oklch(0.577 0.245 27.325);
-    --color-border:  oklch(0.922 0 0);
-    --color-input:  oklch(0.922 0 0);
-    --color-ring:  oklch(0.708 0 0);
-    --color-chart-1:  oklch(0.646 0.222 41.116);
-    --color-chart-2:  oklch(0.6 0.118 184.704);
-    --color-chart-3:  oklch(0.398 0.07 227.392);
-    --color-chart-4:  oklch(0.828 0.189 84.429);
-    --color-chart-5:  oklch(0.769 0.188 70.08);
-    --color-sidebar:  oklch(0.985 0 0);
-    --color-sidebar-foreground:  oklch(0.145 0 0);
-    --color-sidebar-primary:  oklch(0.205 0 0);
-    --color-sidebar-primary-foreground:  oklch(0.985 0 0);
-    --color-sidebar-accent:  oklch(0.97 0 0);
-    --color-sidebar-accent-foreground:  oklch(0.205 0 0);
-    --color-sidebar-border:  oklch(0.922 0 0);
-    --color-sidebar-ring:  oklch(0.708 0 0);
+      --color-background: #eff6ff;
+      --color-foreground: #172554;
+      --color-card: #ffffff;
+      --color-card-foreground: #172554;
+      --color-popover: #ffffff;
+      --color-popover-foreground: #172554;
+      --color-primary: #2563eb;
+      --color-primary-foreground: #ffffff;
+      --color-secondary: #dbeafe;
+      --color-secondary-foreground: #172554;
+      --color-muted: #dbeafe;
+      /* #475569 au lieu de #64748B : contraste AA sur fond #EFF6FF */
+      --color-muted-foreground: #475569;
+      --color-accent: #ccfbf1;
+      --color-accent-foreground: #0f766e;
+      --color-destructive: #b91c1c;
+      --color-border: #dbeafe;
+      --color-input: #cbd5e1;
+      --color-ring: #2563eb;
+      --color-chart-1: #2563eb;
+      --color-chart-2: #0d9488;
+      --color-chart-3: #93c5fd;
+      --color-chart-4: #475569;
+      --color-chart-5: #f59e0b;
+      --color-sidebar: #ffffff;
+      --color-sidebar-foreground: #172554;
+      --color-sidebar-primary: #2563eb;
+      --color-sidebar-primary-foreground: #ffffff;
+      --color-sidebar-accent: #dbeafe;
+      --color-sidebar-accent-foreground: #172554;
+      --color-sidebar-border: #dbeafe;
+      --color-sidebar-ring: #2563eb;
     }
 
     @variant dark {
-      --color-background:  oklch(0.145 0 0);
-      --color-foreground:  oklch(0.985 0 0);
-      --color-card:  oklch(0.205 0 0);
-      --color-card-foreground:  oklch(0.985 0 0);
-      --color-popover:  oklch(0.205 0 0);
-      --color-popover-foreground:  oklch(0.985 0 0);
-      --color-primary:  oklch(0.922 0 0);
-      --color-primary-foreground:  oklch(0.205 0 0);
-      --color-secondary:  oklch(0.269 0 0);
-      --color-secondary-foreground:  oklch(0.985 0 0);
-      --color-muted:  oklch(0.269 0 0);
-      --color-muted-foreground:  oklch(0.708 0 0);
-      --color-accent:  oklch(0.269 0 0);
-      --color-accent-foreground:  oklch(0.985 0 0);
-      --color-destructive:  oklch(0.704 0.191 22.216);
-      --color-border:  oklch(1 0 0 / 10%);
-      --color-input:  oklch(1 0 0 / 15%);
-      --color-ring:  oklch(0.556 0 0);
-      --color-chart-1:  oklch(0.488 0.243 264.376);
-      --color-chart-2:  oklch(0.696 0.17 162.48);
-      --color-chart-3:  oklch(0.769 0.188 70.08);
-      --color-chart-4:  oklch(0.627 0.265 303.9);
-      --color-chart-5:  oklch(0.645 0.246 16.439);
-      --color-sidebar:  oklch(0.205 0 0);
-      --color-sidebar-foreground:  oklch(0.985 0 0);
-      --color-sidebar-primary:  oklch(0.488 0.243 264.376);
-      --color-sidebar-primary-foreground:  oklch(0.985 0 0);
-      --color-sidebar-accent:  oklch(0.269 0 0);
-      --color-sidebar-accent-foreground:  oklch(0.985 0 0);
-      --color-sidebar-border:  oklch(1 0 0 / 10%);
-      --color-sidebar-ring:  oklch(0.556 0 0);
+      --color-background: #0b1226;
+      --color-foreground: #e2e8f0;
+      --color-card: #111b3a;
+      --color-card-foreground: #e2e8f0;
+      --color-popover: #111b3a;
+      --color-popover-foreground: #e2e8f0;
+      --color-primary: #2563eb;
+      --color-primary-foreground: #ffffff;
+      --color-secondary: #1e2a52;
+      --color-secondary-foreground: #e2e8f0;
+      --color-muted: #1e2a52;
+      --color-muted-foreground: #94a3b8;
+      --color-accent: #134e4a;
+      --color-accent-foreground: #99f6e4;
+      --color-destructive: #f87171;
+      --color-border: #1e2a52;
+      --color-input: #334155;
+      --color-ring: #60a5fa;
+      --color-chart-1: #60a5fa;
+      --color-chart-2: #2dd4bf;
+      --color-chart-3: #93c5fd;
+      --color-chart-4: #94a3b8;
+      --color-chart-5: #fbbf24;
+      --color-sidebar: #111b3a;
+      --color-sidebar-foreground: #e2e8f0;
+      --color-sidebar-primary: #2563eb;
+      --color-sidebar-primary-foreground: #ffffff;
+      --color-sidebar-accent: #1e2a52;
+      --color-sidebar-accent-foreground: #e2e8f0;
+      --color-sidebar-border: #1e2a52;
+      --color-sidebar-ring: #60a5fa;
     }
   }
 }
-
