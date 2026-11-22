@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "minimal",
-    "slug": "minimal",
+    "name": "TripPlan",
+    "slug": "tripplan",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "minimal",
+    "icon": "./assets/images/tripplan-logo.png",
+    "scheme": "tripplan",
     "userInterfaceStyle": "automatic",
     "assetBundlePatterns": [
       "**/*"
@@ -15,23 +15,23 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/images/tripplan-logo.png",
+        "backgroundColor": "#EFF6FF"
       }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/tripplan-logo.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash.png",
+          "image": "./assets/images/tripplan-logo.png",
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#EFF6FF"
         }
       ],
       "expo-status-bar",

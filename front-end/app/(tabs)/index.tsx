@@ -1,13 +1,26 @@
 
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet, ScrollView } from 'react-native';
+
+import { Text } from '@/components/ui/text';
+import HomeHeader from '@/components/home/home-header';
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Bienvenue sur TripPlan</Text>
-      <Text style={styles.subtitle}>
-        Prépare ton prochain voyage !
-      </Text>
+      <HomeHeader />
+
+      <ScrollView
+        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+      >
+        <Text variant="h2" className="text-[#172554]">
+          Bienvenue sur TripPlan
+        </Text>
+
+        <Text className="mt-3 text-center text-[#64748B]">
+          Prépare ton prochain voyage !
+        </Text>
+      </ScrollView>
     </View>
   );
 }
@@ -15,19 +28,13 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#EFF6FF",
+    backgroundColor: '#EFF6FF',
+  },
+
+  content: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#172554",
-  },
-  subtitle: {
-    fontSize: 15,
-    color: "#64748B",
-    marginTop: 10,
   },
 });

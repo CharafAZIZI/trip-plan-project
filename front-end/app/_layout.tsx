@@ -1,4 +1,3 @@
-
 import '@/global.css';
 
 import { NAV_THEME } from '@/lib/theme';
