@@ -1,136 +1,64 @@
 import { Tabs } from 'expo-router';
-import {
-  House,
-  Compass,
-  Map,
-  Heart,
-  UserRound,
-} from 'lucide-react-native';
+import { Compass, Heart, House, Map, UserRound } from 'lucide-react-native';
+import { useThemeColors } from '@/hooks/use-theme-colors';
+import { useTabBarMetrics } from '@/hooks/use-tab-bar-metrics';
 
-import {
-  Platform,
-  useWindowDimensions,
-} from 'react-native';
-
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-
-const COLORS = {
-  primary: '#2563EB',
-  inactive: '#94A3B8',
-  background: '#FFFFFF',
-  border: '#E2E8F0',
-};
+const ICON_SIZE = 22;
 
 export default function TabsLayout() {
-  const { width } = useWindowDimensions();
-  const insets = useSafeAreaInsets();
-
-  // Détection des plateformes et dimensions
-  const isWeb = Platform.OS === 'web';
-  const isLargeScreen = width >= 768;
-  const isDesktop = width >= 1024;
-
-  // Dimensions adaptatives
-  const tabBarHeight = isWeb
-    ? isDesktop ? 68 : 65
-    : Platform.OS === 'ios' ? 60 + insets.bottom : 65 + insets.bottom;
-
-  const tabBarPaddingTop = isLargeScreen ? 8 : 6;
-
-  const tabBarPaddingBottom = isWeb
-    ? 6
-    : Platform.OS === 'ios'
-      ? Math.max(insets.bottom, 8)
-      : Math.max(insets.bottom, 8);
-
-  const iconSize = isLargeScreen ? 23 : 22;
+  const colors = useThemeColors();
+  const bar = useTabBarMetrics();
 
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
+        sceneStyle: { backgroundColor: colors.background },
 
-        tabBarActiveTintColor: COLORS.primary,
-        tabBarInactiveTintColor: COLORS.inactive,
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.mutedForeground,
+        tabBarActiveBackgroundColor: colors.secondary,
 
         tabBarStyle: {
-          height: tabBarHeight,
-          paddingTop: tabBarPaddingTop,
-          paddingBottom: tabBarPaddingBottom,
-          backgroundColor: COLORS.background,
-          borderTopColor: COLORS.border,
-          borderTopWidth: 1,
-          elevation: 0,
-
-          // Adaptation Web
-          ...(isWeb && {
-            position: 'relative',
-          }),
+          position: 'absolute',
+          left: bar.left,
+          bottom: bar.bottom,
+          width: bar.width,
+          height: bar.height,
+          paddingTop: 0,
+          paddingBottom: 0,
+          paddingHorizontal: 6,
+          borderRadius: 32,
+          borderTopWidth: 0,
+          backgroundColor: colors.card,
+          shadowColor: '#172554',
+          shadowOffset: { width: 0, height: 12 },
+          shadowOpacity: 0.18,
+          shadowRadius: 24,
+          elevation: 12,
         },
-
-        tabBarLabelStyle: {
-          fontSize: isLargeScreen ? 12 : 11,
-          fontWeight: '600',
-          marginTop: 3,
-        },
-
-        tabBarIconStyle: {
-          marginTop: 2,
-        },
-
-        tabBarItemStyle: {
-          paddingVertical: 2,
-        },
-      }}
-    >
+        tabBarItemStyle: { marginVertical: 6, marginHorizontal: 2, borderRadius: 24 },
+        tabBarLabelStyle: { fontSize: 11, fontWeight: '600' },
+      }}>
       <Tabs.Screen
         name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => (
-            <House color={color} size={iconSize} />
-          ),
-        }}
+        options={{ title: 'Accueil', tabBarIcon: ({ color }) => <House color={color} size={ICON_SIZE} /> }}
       />
-
       <Tabs.Screen
         name="explore"
-        options={{
-          title: 'Explorer',
-          tabBarIcon: ({ color }) => (
-            <Compass color={color} size={iconSize} />
-          ),
-        }}
+        options={{ title: 'Explorer', tabBarIcon: ({ color }) => <Compass color={color} size={ICON_SIZE} /> }}
       />
-
       <Tabs.Screen
         name="trips"
-        options={{
-          title: 'Voyages',
-          tabBarIcon: ({ color }) => (
-            <Map color={color} size={iconSize} />
-          ),
-        }}
+        options={{ title: 'Voyages', tabBarIcon: ({ color }) => <Map color={color} size={ICON_SIZE} /> }}
       />
-
       <Tabs.Screen
         name="favorites"
-        options={{
-          title: 'Favoris',
-          tabBarIcon: ({ color }) => (
-            <Heart color={color} size={iconSize} />
-          ),
-        }}
+        options={{ title: 'Favoris', tabBarIcon: ({ color }) => <Heart color={color} size={ICON_SIZE} /> }}
       />
-
       <Tabs.Screen
         name="profile"
-        options={{
-          title: 'Profil',
-          tabBarIcon: ({ color }) => (
-            <UserRound color={color} size={iconSize} />
-          ),
-        }}
+        options={{ title: 'Profil', tabBarIcon: ({ color }) => <UserRound color={color} size={ICON_SIZE} /> }}
       />
     </Tabs>
   );
