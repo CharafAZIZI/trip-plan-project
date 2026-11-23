@@ -1,5 +1,5 @@
 import { AuthScreen } from '@/components/auth/auth-screen';
-import { TextField } from '@/components/forms/text-field';
+import { TextField } from '@/components/ui/text-field';
 import { Button } from '@/components/ui/button';
 import { Text } from '@/components/ui/text';
 import { validateEmail } from '@/lib/validation';
@@ -49,7 +49,7 @@ export default function LoginScreen() {
         <Pressable
           role="link"
           className="min-h-11 items-center justify-center"
-          onPress={() => router.replace('/register')}>
+          onPress={() => router.replace('./register')}>
           <Text className="text-muted-foreground text-sm">
             Pas encore de compte ?{' '}
             <Text className="text-primary text-sm font-bold">Créer un compte</Text>

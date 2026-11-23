@@ -84,7 +84,7 @@ export default function OnboardingScreen() {
   function onNext() {
     if (isLast) {
       completeOnboarding();
-      router.replace('/register');
+      router.replace('./register');
       return;
     }
     scrollRef.current?.scrollTo({ x: (index + 1) * slideWidth, animated: true });
@@ -93,7 +93,7 @@ export default function OnboardingScreen() {
 
   function onSkip() {
     completeOnboarding();
-    router.replace('/login');
+    router.replace('./login');
   }
 
   return (

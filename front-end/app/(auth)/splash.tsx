@@ -17,7 +17,7 @@ export default function SplashScreen() {
     progress.value = withTiming(1, { duration: 700 });
 
     const timer = setTimeout(() => {
-      router.replace(hasSeenOnboarding ? '/login' : '/onboarding');
+      router.replace(hasSeenOnboarding ? './login' : './onboarding');
     }, SPLASH_DURATION_MS);
 
     return () => clearTimeout(timer);
